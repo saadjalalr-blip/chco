@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Commander {{ produit.nom }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header small">
+    <div class="header-inner">
+        <div class="logo-zone">
+            <div class="logo-circle">CF</div>
+            <div>
+                <h1 class="brand-title">CHOCOFIT</h1>
+                <p class="brand-subtitle">Commande sécurisée</p>
+            </div>
+        </div>
+        <a href="/" class="nav-back">← Retour à la boutique</a>
+    </div>
+</header>
+
+<section class="section form-section">
+    <div class="form-wrapper">
+        <div class="form-side">
+            <p class="form-label-top">Vous commandez</p>
+            <h2 class="form-product-name">{{ produit.nom }}</h2>
+
+            <div class="form-product-card">
+                <img src="/static/{{ produit.img }}" alt="{{ produit.nom }}">
+                <div>
+                    <p class="form-product-price">{{ produit.prix }} MAD</p>
+                    <p class="form-product-note">
+                        Pot de 550 g • Livraison incluse<br>
+                        <span class="highlight">-20 DH livraison sur votre première commande*</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-side">
+            <!-- Avertissement si erreur -->
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="alert">
+                        {{ messages[0] }}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <form method="POST" action="/confirmation" class="choco-form">
+
+                <!-- Données cachées -->
+                <input type="hidden" name="produit" value="{{ produit.nom }}">
+                <input type="hidden" name="prix" value="{{ produit.prix }}">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nom *</label>
+                        <input type="text" name="nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Prénom *</label>
+                        <input type="text" name="prenom" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Email *</label>
+                    <input type="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Téléphone *</label>
+                    <input type="text" name="telephone" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Adresse complète *</label>
+                    <textarea name="adresse" required placeholder="Ville, quartier, rue, immeuble, appartement..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-main full-width">
+                    Valider ma commande
+                </button>
+
+                <p class="form-small-note">
+                    * Remise appliquée automatiquement sur le total de votre première commande.
+                </p>
+            </form>
+        </div>
+    </div>
+</section>
+
+<div class="footer">
+    © 2025 CHOCOFIT – Produit naturel et premium | Made in Morocco
+</div>
+
+</body>
+</html>

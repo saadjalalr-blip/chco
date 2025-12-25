@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Commande confirmée</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header small">
+    <div class="header-inner">
+        <div class="logo-zone">
+            <div class="logo-circle">CF</div>
+            <div>
+                <h1 class="brand-title">CHOCOFIT</h1>
+                <p class="brand-subtitle">Merci pour votre confiance</p>
+            </div>
+        </div>
+        <a href="/" class="nav-back">Retour à la boutique</a>
+    </div>
+</header>
+
+<section class="section confirm-section">
+    <div class="confirmation-box luxe">
+        <div class="check-circle">✓</div>
+
+        <h2>Commande enregistrée avec succès</h2>
+
+        <p class="confirm-main">
+            Merci <strong>{{ nom }}</strong>, votre commande
+            <span class="highlight">{{ produit }}</span> a bien été prise en compte.
+        </p>
+
+        <div class="confirm-summary">
+            <p>Prix du produit : <strong>{{ prix }} DH</strong></p>
+            <p>Remise 1ère commande :
+                {% if remise < 0 %}
+                    <strong style="color:#1e8c4a;">{{ remise }} DH</strong>
+                {% else %}
+                    <strong>Aucune</strong>
+                {% endif %}
+            </p>
+            <p>Total à payer :
+                <strong class="total-price">{{ total }} DH</strong>
+            </p>
+        </div>
+
+        <p class="confirm-text">
+            Notre équipe CHOCOFIT vous contactera dans les plus brefs délais
+            pour confirmer les détails de la livraison. Préparez vos tartines,
+            le plaisir healthy arrive bientôt chez vous. 🍫🌴
+        </p>
+
+        <a href="/" class="btn btn-main">Retour à la boutique</a>
+    </div>
+</section>
+
+<div class="footer">
+    © 2025 CHOCOFIT – Produit naturel et premium | Made in Morocco
+</div>
+
+</body>
+</html>

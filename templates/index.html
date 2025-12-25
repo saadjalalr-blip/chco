@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Boutique CHOCOFIT</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+    <div class="header-inner">
+        <div class="logo-zone">
+            <div class="logo-circle">CF</div>
+            <div>
+                <h1 class="brand-title">CHOCOFIT</h1>
+                <p class="brand-subtitle">Pâte à tartiner naturelle & premium</p>
+            </div>
+        </div>
+        <nav class="nav-links">
+            <a href="#produits">Nos produits</a>
+            <a href="#concept">Concept</a>
+            <a href="#origine">Origine</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <p class="hero-tag">100% naturel • Made in Morocco • Sans sucre ajouté</p>
+        <h2 class="hero-title">Le plaisir chocolaté<br><span>sans compromis</span></h2>
+        <p class="hero-text">
+            Une pâte à tartiner d’exception à base de dattes et de kaki,
+            travaillée comme un produit de luxe, pour les palais qui aiment
+            le goût intense du cacao et le raffinement des ingrédients naturels.
+        </p>
+        <a href="#produits" class="btn btn-main">Découvrir la collection</a>
+    </div>
+    <div class="hero-badge">
+        <div class="badge-inner">
+            <span class="badge-top">Edition artisanale</span>
+            <span class="badge-mid">CHOCOFIT</span>
+            <span class="badge-bottom">Lot limité</span>
+        </div>
+    </div>
+</section>
+
+<section id="produits" class="section">
+    <div class="section-head">
+        <h3 class="section-title">Nos offres CHOCOFIT</h3>
+        <p class="section-subtitle">
+            Une sélection courte, maîtrisée, pensée pour sublimer vos petits-déjeuners,
+            collations et moments de partage.
+        </p>
+    </div>
+
+    <div class="cards-grid">
+        {% for p in produits %}
+        <div class="card">
+            <div class="card-ribbon">{{ p.promo }}</div>
+            <div class="card-image-wrap">
+                <img src="/static/{{ p.img }}" class="prod-img" alt="{{ p.nom }}">
+            </div>
+            <div class="card-body">
+                <h2 class="card-title">{{ p.nom }}</h2>
+                <p class="card-desc">{{ p.description }}</p>
+
+                <div class="card-bottom">
+                    <div class="card-price">
+                        <span class="price-value">{{ p.prix }} MAD</span>
+                        <span class="price-note">550 g • livraison incluse*</span>
+                    </div>
+                    <a class="btn btn-card" href="/commande/{{ p.id }}">Commander</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <p class="price-small-note">
+        * Réduction de -20 DH livraison appliquée automatiquement à la première commande.
+    </p>
+</section>
+
+<section id="concept" class="section section-soft">
+    <div class="section-head">
+        <h3 class="section-title">Un concept healthy & raffiné</h3>
+    </div>
+    <div class="concept-grid">
+        <div class="concept-box">
+            <h4>Ingrédients nobles</h4>
+            <p>Dattes Majhoul, kaki, cacao pur, huile de coco, noisettes et lait d’amande :
+               une recette sans huile de palme, sans lactose, sans gluten.</p>
+        </div>
+        <div class="concept-box">
+            <h4>Signature marocaine</h4>
+            <p>Un savoir-faire artisanal, un design inspiré du zellige et une
+               mise en avant du terroir local pour un produit fièrement marocain.</p>
+        </div>
+        <div class="concept-box">
+            <h4>Positionnement premium</h4>
+            <p>Pot en verre, identité visuelle élégante, volumes limités :
+               CHOCOFIT se place sur le segment des pâtes à tartiner haut de gamme.</p>
+        </div>
+    </div>
+</section>
+
+<section id="origine" class="section section-bottom">
+    <div class="origin-box">
+        <h3>Made in Morocco, pensé pour le monde</h3>
+        <p>
+            Imaginé à Settat, CHOCOFIT valorise les fruits et ingrédients du pays
+            dans une vision moderne : un produit sain, esthétique, prêt à séduire
+            aussi bien les sportifs que les amoureux de chocolat gourmand.
+        </p>
+    </div>p
+</section>
+
+<div class="footer">
+    © 2025 CHOCOFIT – Produit naturel et premium | Made in Morocco
+</div>
+
+</body>
+</html>
